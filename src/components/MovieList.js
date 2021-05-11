@@ -9,7 +9,7 @@ const MovieList = (props) => {
   const [id, setId] = useState("");
 
   useEffect(() => {
-    setMoviesToRender(prevState => movies);
+    setMoviesToRender(movies);
   }, [movies]);
 
   console.log(movies);

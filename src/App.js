@@ -100,18 +100,21 @@ const App = () => {
 
   useEffect(() => {
     const moviesToSort = recomMovies && recomMovies[0] && recomMovies[0].items;
+	let moviesToSend;
     if (orderBy === 'releaseDate') {
-      setMovies(moviesToSort && moviesToSort.sort((a, b) => {
-        if (a.releaseDate < b.releaseDate) return -1
-        return a.releaseDate > b.releaseDate ? 1 : 0
-      }))
+		moviesToSend = moviesToSort && moviesToSort.sort((a, b) => {
+			if (a.releaseDate < b.releaseDate) return -1
+			return a.releaseDate > b.releaseDate ? 1 : 0
+		  })
+      setMovies(moviesToSend && [...moviesToSend])
     }
 
     if (orderBy === 'rank') {
-      setMovies(moviesToSort && moviesToSort.sort((a, b) => {
-        if (a.rank < b.rank) return -1
-        return a.rank > b.rank ? 1 : 0
-      }))
+		moviesToSend = moviesToSort && moviesToSort.sort((a, b) => {
+			if (a.rank < b.rank) return -1
+			return a.rank > b.rank ? 1 : 0
+		  })
+      setMovies(moviesToSend && [...moviesToSend])
     }
   }, [orderBy, recomMovies])
 
